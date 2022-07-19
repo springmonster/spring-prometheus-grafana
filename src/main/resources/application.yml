@@ -1,0 +1,21 @@
+#  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#actuator.metrics.export.prometheus
+spring:
+  application:
+    name: spring-prometheus-grafana
+management:
+  # https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-metrics.html
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      simple:
+        enabled: false
+  # https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env, beans
+  endpoint:
+    shutdown:
+      enabled: true
